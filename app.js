@@ -122,6 +122,7 @@ function handleDisconnect() {
       // Connection to the MySQL server is usually
       handleDisconnect(); // lost due to either server restart, or a
     } else {
+      handleDisconnect();
       // connnection idle timeout (the wait_timeout
       throw err; // server variable configures this)
     }
@@ -614,7 +615,7 @@ app.post("/delete_user", function (req, res) {
   //id is an array of id to update status to 0
   let id = req.body.id;
   console.log("id: ", id);
-  if (!id) {
+  if (!id && id !== 0) {
     return res.status(400).send({ error: true, message: "Please provide id" });
   }
   //update status to 0
@@ -637,7 +638,7 @@ app.post("/update_role", function (req, res) {
   let id = req.body.id;
   let permission = req.body.permission;
   console.log("id: ", id);
-  if (!id) {
+  if (!id && id !== 0) {
     return res.status(400).send({ error: true, message: "Please provide id" });
   }
   //update status to 0
@@ -775,7 +776,7 @@ app.post("/update_aspiration_input", function (req, res) {
   let id = req.body.id;
   let aspiration_input = req.body.aspiration_input;
   console.log("id: ", id);
-  if (!id) {
+  if (!id && id !== 0) {
     return res.status(400).send({ error: true, message: "Please provide id" });
   }
   //update aspiration_input
@@ -810,7 +811,7 @@ app.post("/update_user", function (req, res) {
   let password = req.body.password;
 
   console.log("id: ", id);
-  if (!id) {
+  if (!id && id !== 0) {
     return res.status(400).send({ error: true, message: "Please provide id" });
   }
   //update user data
@@ -842,7 +843,7 @@ app.post("/update_user", function (req, res) {
 app.post("/request_admin", function (req, res) {
   let id = req.body.id;
   console.log("id: ", id);
-  if (!id) {
+  if (!id && id !== 0) {
     return res.status(400).send({ error: true, message: "Please provide id" });
   }
   //update status to 0
@@ -880,7 +881,7 @@ app.get("/list_nguyen_vong", function (req, res) {
 app.post("/delete_nguyen_vong", function (req, res) {
   let id = req.body.id;
   console.log("id: ", id);
-  if (!id) {
+  if (!id && id !== 0) {
     return res.status(400).send({ error: true, message: "Please provide id" });
   }
   //delete nguyen_vong
@@ -913,7 +914,7 @@ app.get("/list_uni", function (req, res) {
 app.post("/delete_uni", function (req, res) {
   let id = req.body.id;
   console.log("id: ", id);
-  if (!id) {
+  if (!id && id !== 0) {
     return res.status(400).send({ error: true, message: "Please provide id" });
   }
   //delete uni from json file
@@ -967,7 +968,7 @@ app.post("/update_uni", function (req, res) {
   let content = req.body.content;
   let daoTao = req.body.daoTao;
   console.log("id: ", id);
-  if (!id) {
+  if (!id && id !== 0) {
     return res.status(400).send({ error: true, message: "Please provide id" });
   }
   //update uni from json file
